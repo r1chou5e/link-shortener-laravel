@@ -6,13 +6,16 @@ use App\Models\Link;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\Storage;
 
 class LinkController extends Controller
 {
     public function home()
     {
         $newLink = Cache::get('newLink');
-        return view('home', compact('newLink'));
+        $qrCodePath = Cache::get('qrCodePath');
+        return view('home', compact('newLink', 'qrCodePath'));
     }
 
     public function get($shortUrl)

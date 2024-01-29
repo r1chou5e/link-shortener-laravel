@@ -59,6 +59,12 @@
             color: red;
         }
 
+        .qrCode {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
         #shortLinkResult {
             margin-top: 20px;
             font-weight: bold;
@@ -85,8 +91,8 @@
         <div id="shortLinkResult">
             Short URL: <a href="{{ 'http://'.$newLink->short_url }}" target="_blank">{{ $newLink->short_url }}</a>
         </div>
+        <div class="qrCode">{!! QrCode::generate($newLink->original_url); !!}</div>
         @endif
-
     </div>
 </body>
 
